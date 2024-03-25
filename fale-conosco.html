@@ -9,6 +9,13 @@
 </head>
 
 <script language=javascript src="_javascript/funcoes.js"></script>
+<script>
+	function calc_total() {
+		var qtd = parseInt(document.getElementById('cQtd').value);
+		tot = qtd * 1500;
+		document.getElementById('cTot').value = tot;
+	}
+</script>
 
 <body>
 	<div id="interface">
@@ -58,42 +65,64 @@
 			</article>
 		</section>
 
-		<form action="">
+		<form method="post" id="fContato" oninput="calc_total();">
 			<fieldset id="usuario">
 				<legend>Identificação do Usuário</legend>
-				<p>Nome: <input type="text" name="tnome" id="cnome" size="20" maxlength="30" placeholder="Nome Completo"/></p>
-				<p>Senha:<input type="password" name="tsenha" id="csenha" size="8" maxlength="8" placeholder="8 Digitos"/></p>
-				<p>E-mail:<input type="email" name="temail" id="cemail" size="20" maxlength="20" placeholder="@gmail.com"/></p>
+				<p>Nome: <input type="text" name="tnome" id="cnome" size="20" maxlength="30"
+						placeholder="Nome Completo" /></p>
+				<p>Senha: <input type="password" name="tsenha" id="csenha" size="8" maxlength="8"
+						placeholder="8 Digitos" /></p>
+				<p>E-mail: <input type="email" name="temail" id="cemail" size="20" maxlength="20"
+						placeholder="@gmail.com" /></p>
 				<fieldset id="sexo">
 					<legend>Sexo:</legend>
-					- Masculino
-					- Feminino
+
+					<input type="radio" name="tsexo" id="cMasc" checked />Masculino <br />
+					<input type="radio" name="tsexo" id="cFem" />Feminino
+
 				</fieldset>
-				<p>Data de Nascimento:</p>
+				<p>Data de Nascimento: <input type="date" name="tName" id="cName" /></p>
 			</fieldset>
 			<fieldset id="endereco">
 				<legend>Endereço do Usuário</legend>
-				Logradouro:
-				Número:
-				Estado:
-				Cidade:
+				<p>Logradouro: <input type="text" name="tLogra" id="cLogra" size="50" maxlength="80"
+						placeholder="Av.Endereço" /></p>
+				<p>Número: <input type="number" name="tNum" id="cNum" min="0" max="999999" /></p>
+				<p>Estado: <select name="tEsta" id="cEsta">
+						<option value="RJ">Rio Grande do Norte</option>
+						<option value="PB">Paraiba</option>
+						<option value="CE">Ceara</option>
+						<option value="BA">Bahia</option>
+						<option value="AL">Alagoas</option>
+					</select></p>
+				<p>Cidade: <input type="text" name="tCida" id="cCida" size="20" maxlength="30" list="cidade"></p>
+				<datalist id="cidade">
+					<option value="Natal"></option>
+					<option value="Fortaleza"></option>
+					<option value="Joao Pessoa"></option>
+					<option value="Salvador"></option>
+				</datalist>
 			</fieldset>
 			<fieldset id="mensagem">
 				<legend>Mensagem do Usuário</legend>
-				Grau de Urgência:
-				Mensagem:
+				<p> <input type="range" name="tUrg" id="cURG" min="0" max="10" step="2">Grau de Urgência: </p>
+				<p>Mensagem: <textarea name="tMsg" id="cMsg" cols="50" rows="10"
+						placeholder="Deixe aqui a sua mensagem">
+
+				</textarea></p>
 			</fieldset>
 			<fieldset id="pedido">
 				<legend>Quero um Google Glass</legend>
-				Gostaria de adquirir um Google Glass quando disponível
-				Cor:
-				Quantidade:
-				Preço Total: R$
+				<p> <input type="checkbox" name="tPed" id="cPed" checked />Gostaria de adquirir um Google Glass</br> quando
+					disponível</p>
+					<p>Cor: <input type="color" name="tCor" id="cCor" /></p>
+					<p>Quantidade: <input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0" /></p>
+					<p>Preço Total: R$ <input type="text" name="tTot" id="cTot" placeholder="Total a pagar" readonly /></p>
 			</fieldset>
 		</form>
 
 
-		[BOTÃO ENVIAR]
+		<input type="image" src="_imagens/botao-enviar.png" />
 
 		<footer id="rodape">
 			Copyright 2024 - by Ewerton Duda <br />
